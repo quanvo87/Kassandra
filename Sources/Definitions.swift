@@ -234,42 +234,43 @@ internal func packColumnData(key: String, columns: [String: DataType]) -> String
     
     var str = ""
     for (name, type) in columns {
+        str += "\"\(name)\" "
         switch type {
-        case .custom    : str += name + " custom "
-        case .ASCII     : str += name + " ASCII "
-        case .bigInt    : str += name + " bigInt "
-        case .blob      : str += name + " blob "
-        case .boolean   : str += name + " boolean "
-        case .counter   : str += name + " counter "
-        case .decimal   : str += name + " decimal "
-        case .double    : str += name + " double "
-        case .float     : str += name + " float "
-        case .int       : str += name + " int "
-        case .text      : str += name + " text "
-        case .timestamp : str += name + " timestamp "
-        case .uuid      : str += name + " uuid "
-        case .varChar   : str += name + " text "
-        case .varInt    : str += name + " varInt "
-        case .timeUUID  : str += name + " timeUUID "
-        case .inet      : str += name + " inet "
-        case .list      : str += name + " list "
-        case .map       : str += name + " map "
-        case .set       : str += name + " set "
-        case .UDT       : str += name + " UDT "
-        case .tuple     : str += name + " tuple "
+        case .custom    : str += "custom"
+        case .ASCII     : str += "ASCII"
+        case .bigInt    : str += "bigInt"
+        case .blob      : str += "blob"
+        case .boolean   : str += "boolean"
+        case .counter   : str += "counter"
+        case .decimal   : str += "decimal"
+        case .double    : str += "double"
+        case .float     : str += "float"
+        case .int       : str += "int"
+        case .text      : str += "text"
+        case .timestamp : str += "timestamp"
+        case .uuid      : str += "uuid"
+        case .varChar   : str += "text"
+        case .varInt    : str += "varInt"
+        case .timeUUID  : str += "timeUUID"
+        case .inet      : str += "inet"
+        case .list      : str += "list"
+        case .map       : str += "map"
+        case .set       : str += "set"
+        case .UDT       : str += "UDT"
+        case .tuple     : str += "tuple"
         }
         
-        name == key ? (str += "PRIMARY KEY,") : (str += ",")
+        name == key ? (str += " PRIMARY KEY,") : (str += ", ")
     }
     return str
 }
 
 internal func packPairs(_ pairs: [String: Any], mirror: Mirror? = nil) -> String {
-    return pairs.map{key,val in  key + "=" + packType(val) }.joined(separator: ", ")
+    return pairs.map{key,val in  "\"\(key)\"" + "=" + packType(val) }.joined(separator: ", ")
 }
 
 internal func packKeys(_ dict: [String: Any]) -> String {
-    return dict.map {key, value in key }.joined(separator: ", ")
+    return dict.map {key, value in "\"\(key)\"" }.joined(separator: ", ")
 }
 
 internal func packKeys(_ mirror: Mirror) -> String {

@@ -51,7 +51,7 @@ public extension Table {
      */
     public static func count(_ fields: Field...) -> Select {
         
-        let fields = fields.map{ String(describing: $0) }
+        let fields = fields.map{ "\"\($0)\"" }
 
         var query = Select(fields, from: Self.tableName)
 
