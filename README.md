@@ -1,5 +1,7 @@
 # Kassandra
 
+🚫 This project is no longer maintained.
+
 A pure Swift client library for [Apache Cassandra (3.4+)](http://cassandra.apache.org/) and [ScyllaDB](http://www.scylladb.com/) using Cassandra's binary protocol, CQL 3.2.
 
 [![Build Status](https://travis-ci.org/IBM-Swift/Kassandra.svg?branch=master)](https://travis-ci.org/IBM-Swift/Kassandra)
